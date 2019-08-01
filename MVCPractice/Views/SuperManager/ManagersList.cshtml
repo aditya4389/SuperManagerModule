@@ -1,0 +1,105 @@
+﻿
+@{
+    ViewBag.Title = "ManagersList";
+}
+
+
+@model  IEnumerable<BusinessLayer.Manager>
+
+
+@{
+    ViewBag.Title = "Managers";
+}
+
+<h2>ManagersList</h2>
+<div class="jumbotron d-inline-block" style=" margin-top: 100px">
+    @*@using (Html.BeginForm())
+    {
+        foreach(BusinessLayer.Manager manager in @model)
+        { 
+        <div class="input-group mb-3">
+            <label id="Label1" class="input-group-text input-group-append">manager id </label>
+            @Html.EditorFor(model => model.managerId)
+        </div>
+        <div>
+            <button type="submit" class="btn btn-outline-dark">Submit</button>
+        </div>
+        <label id="Label2"></label>
+        <div class="table-responsive col-10">
+            @if (@Model != null)
+            {
+                <table border="1" style="font-family:Arial" class="table table-hover table-striped">
+                    <tr>
+                        <th>ManagerId</th>
+                        <th>ManagerName</th>
+                        <th>Address</th>
+                        <th>PhoneNo</th>
+                        <th>Email Id</th>
+                        <th>Branch Id</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Model.managerId
+                        </td>
+                        <td>
+                            @Model.managerName
+                        </td>
+                        <td>
+                            @Model.address
+                        </td>
+                        <td>
+                            @Model.phoneNo
+                        </td>
+                        <td>
+                            @Model.emailId
+                        </td>
+                        <td>
+                            @Model.branchId
+                        </td>
+                    </tr>
+                </table>
+            }
+
+        </div>
+    }
+    }*@
+    
+    <label id="message"></label>
+    <div class="table-responsive">
+        <div>
+
+            <table border="1" style="font-family:Arial" class="table table-hover table-striped">
+                <tr>
+                    <th>Manager Id</th>
+                    <th>Manager Name</th>
+                    <th>Branch Id</th>
+                </tr>
+
+                @foreach (BusinessLayer.Manager manager in @Model)
+                {
+                    <tr>
+
+                        <td>
+                            @manager.managerId
+                        </td>
+                        <td>
+                           @manager.managerName
+
+                        </td>
+                        <td>
+                           @manager.branchId
+                        </td>
+                    </tr>
+
+                }
+
+            </table>
+            <br />
+
+        </div>
+
+
+    </div>
+    <button id="add" onclick="location.href='@Url.Action("addManager","SuperManager")'" class="btn btn-outline-success">Add</button>
+    <button id="back" onclick="location.href='@Url.Action("ManageManager","SuperManager")'" class="btn btn-outline-success">Back</button>
+</div>
